@@ -14,7 +14,7 @@ namespace SnakeLadderProblem
             int num = random.Next(1, 6);
 
 
-            while (Start_POSITION < 101)
+            while (Start_POSITION <= 100)
             {
                 if (Start_POSITION < 0)
                 {
