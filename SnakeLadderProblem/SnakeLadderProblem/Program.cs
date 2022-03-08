@@ -10,12 +10,14 @@ namespace SnakeLadderProblem
 
             int Start_POSITION = 0;
             int NUMBER_OF_PLAYER = 1;
-            Random random = new Random();
-            int num = random.Next(1, 6);
+           
 
 
-            while (Start_POSITION <= 100)
+            while (Start_POSITION < 100)
             {
+                Random random = new Random();
+                int num = random.Next(1, 6);
+
                 if (Start_POSITION < 0)
                 {
                     Start_POSITION = 0;
@@ -33,6 +35,14 @@ namespace SnakeLadderProblem
                             break;
                         case 1:
                             Start_POSITION += num;
+                            if (Start_POSITION  > 100)
+                            {
+                                Start_POSITION = (Start_POSITION - num);
+                            }
+                            //else
+                            //{
+                            //    Start_POSITION += num;
+                            //}
                             break;
                         case 2:
                             Start_POSITION -= num;
