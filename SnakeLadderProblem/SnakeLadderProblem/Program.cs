@@ -39,7 +39,7 @@ namespace SnakeLadderProblem
                             break;
 
                     }
-                    Console.WriteLine("Number got by rolling a die: " + num + "position" + Start_POSITION);
+                    Console.WriteLine("Number got by rolling a die is : " + num + " , position is : " + Start_POSITION);
                 }
             }
         }
