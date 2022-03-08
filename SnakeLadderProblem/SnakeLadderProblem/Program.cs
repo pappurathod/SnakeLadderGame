@@ -13,7 +13,6 @@ namespace SnakeLadderProblem
             Random random = new Random();
             int num = random.Next(1, 6);
 
-
                 Random random1 = new Random();
                 int checks = random1.Next(0, 2);
 
