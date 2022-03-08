@@ -10,6 +10,7 @@ namespace SnakeLadderProblem
 
             int Start_POSITION = 0;
             int NUMBER_OF_PLAYER = 1;
+            int NUMBER_OF_TIMES = 0;
            
 
 
@@ -49,9 +50,13 @@ namespace SnakeLadderProblem
                             break;
 
                     }
+                    NUMBER_OF_TIMES++;
+
                     Console.WriteLine("Number got by rolling a die is : " + num + " , position is : " + Start_POSITION);
                 }
+                
             }
+            Console.WriteLine(NUMBER_OF_TIMES + " Number of times the die was played to win");
         }
     }
 }
