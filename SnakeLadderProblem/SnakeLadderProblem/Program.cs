@@ -12,8 +12,26 @@ namespace SnakeLadderProblem
             int NUMBER_OF_PLAYER = 1;
             Random random = new Random();
             int num = random.Next(1, 6);
-            Console.WriteLine("Number got by rolling a die: " + num);
-      
+
+
+                Random random1 = new Random();
+                int checks = random1.Next(0, 2);
+
+                switch (checks)
+                {
+                    case 0:
+                        Start_POSITION = Start_POSITION;
+                        break;
+                    case 1:
+                        Start_POSITION += num;
+                        break;
+                    case 2:
+                        Start_POSITION -= num;
+                        break;
+
+                }
+                Console.WriteLine("Number got by rolling a die: " + num + ", position is :" + Start_POSITION);
+            
         }
     }
 }
