@@ -1,62 +1,100 @@
 ﻿// See https://aka.ms/new-console-template for more information
-//Console.WriteLine("Welcome to Snake And Ladder Game");
+
 namespace SnakeLadderProblem
 {
     class SnakeLadder
     {
+        int position = 0;
+        const int NO_PLAY = 0;
+        const int LADDER = 1;
+        const int SNAKE = 2;        
+      
+        static int diceRoll()
+        {
+            Random randomNumber = new Random();
+            int die = randomNumber.Next(1, 7);
+            return die;
+        }
+
+
+        public void PlayerTurns(string player)
+        {        
+            int rollDice = diceRoll();           
+            Random playoption = new Random();
+            int option = playoption.Next(0, 3);
+            //Console.WriteLine("Dice is " + rollDice + " And Option is " + option);
+           
+            switch (option)
+            {
+                case NO_PLAY:
+                    position = position;
+                    break;
+                
+                case LADDER:
+                    if (position + rollDice > 100)
+                    {
+                        position = position;
+                    }
+                    else
+                    {
+                        position += rollDice;
+                    }                   
+                        break;
+
+                case SNAKE:
+                    if (position < 0)
+                    {
+                        position = 0;
+                    }
+                    else
+                    {
+                        position -= rollDice;
+                    }
+                    
+                    break;
+            }        
+              
+            
+        }
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Snake And Ladder Game");
+            
+            
+            SnakeLadder player1 = new SnakeLadder();
+            SnakeLadder player2 = new SnakeLadder();
 
-            int Start_POSITION = 0;
-            int NUMBER_OF_PLAYER = 1;
-            int NUMBER_OF_TIMES = 0;
-           
+            Random toss = new Random();
+            int coin = toss.Next(0, 2);
+            //int rollDice1 = diceRoll();
 
-
-            while (Start_POSITION < 100)
+            while ((player1.position <= 100 ) && (player2.position <= 100))
             {
-                Random random = new Random();
-                int num = random.Next(1, 7);
-
-                if (Start_POSITION < 0)
+                if (coin == 0)
                 {
-                    Start_POSITION = 0;
-                }
-                else
-                {
-
-                    Random random1 = new Random();
-                    int checks = random1.Next(0, 3);
-
-                    switch (checks)
+                    if(player1.position == 100)
                     {
-                        case 0:
-                            Start_POSITION = Start_POSITION;
-                            break;
-                        case 1:
-                            Start_POSITION += num;
-                            if (Start_POSITION  > 100)
-                            {
-                                Start_POSITION = (Start_POSITION - num);
-                            }
-                            //else
-                            //{
-                            //    Start_POSITION += num;
-                            //}
-                            break;
-                        case 2:
-                            Start_POSITION -= num;
-                            break;
-
+                        Console.WriteLine("Player one is winner");
+                        break;
                     }
-                    NUMBER_OF_TIMES++;
+                    player1.PlayerTurns("player 1");                    
+                    coin = 1;
+                    Console.WriteLine("player 1 position " + player1.position);
 
-                    Console.WriteLine("Number got by rolling a die is : " + num + " , position is : " + Start_POSITION);
                 }
-                
-            }
-            Console.WriteLine(NUMBER_OF_TIMES + " Number of times the die was played to win");
+                else if (coin == 1)
+                {
+                    if (player2.position == 100)
+                    {
+                        Console.WriteLine("Player two is winner");
+                        break;
+                    }
+                    player2.PlayerTurns("player 2");                    
+                    coin = 0;
+                    Console.WriteLine("player 2 position " + player2.position);
+                }
+            }          
+
         }
     }
 }
